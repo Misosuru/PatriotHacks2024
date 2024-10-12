@@ -44,25 +44,37 @@ pre {
   line-height: 18.5714px;
 }
 
+/* HomeContent.css */
 .home-container {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center align items horizontally */
+  padding: 20px; /* Add some padding */
 }
 
-.image-container img {
-  max-width: 300px;
-  height: auto;
-  border-radius: 10px;
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .text-container {
-  margin-left: 20px;
+  margin-right: 20px;
+  text-align: left;
+}
+
+.image-container img {
+  width: 300px;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding-right: 100px;
 }
 
 .input-container {
-  margin-top: 20px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -78,5 +90,5 @@ pre {
   max-width: 400px;
   background-color: #f0f0f0;
   color: #666;
-  cursor: not-allowed; /* Change cursor to indicate non-interaction */
+  cursor: not-allowed;
 }
