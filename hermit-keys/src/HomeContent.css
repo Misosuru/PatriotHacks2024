@@ -63,6 +63,7 @@ pre {
 .text-container {
   margin-right: 20px;
   text-align: left;
+  width: 50%;
 }
 
 .image-container img {
