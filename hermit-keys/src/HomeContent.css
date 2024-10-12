@@ -44,12 +44,11 @@ pre {
   line-height: 18.5714px;
 }
 
-/* HomeContent.css */
 .home-container {
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  align-items: center; /* Center align items horizontally */
-  padding: 20px; /* Add some padding */
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
 .content-container {
@@ -67,12 +66,10 @@ pre {
 }
 
 .image-container img {
-  width: 300px;
-  height: 200px;
+  width: 500px;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
-  padding-right: 100px;
+  padding-left: 100px;
 }
 
 .input-container {

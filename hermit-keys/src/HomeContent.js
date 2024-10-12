@@ -25,17 +25,18 @@ const HomeContent = () => {
           </p>
         </div>
         <div className="image-container">
-          <img src="/IMG_9744.jpg" alt="Description" />
+          <img src="/nationalBuy.png" alt="Description" />
+          <img src="/nationalRent.png" alt="Description" />
         </div>
       </div>
       <div className="input-container">
         <label htmlFor="disabledInput">
-          <p>Zip Code: </p>
+          <p>County: </p>
         </label>
         <input
           type="text"
           id="disabledInput"
-          value="Enter Zip Code Here."
+          value="Enter a County."
           disabled
           className="textbox" // Add a class for styling
         />
