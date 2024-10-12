@@ -17,13 +17,15 @@ const HomeContent = () => {
         </div>
       </div>
       <div className="input-container">
-        <label htmlFor="disabledInput">Your Message:</label>
+        <label htmlFor="disabledInput">
+          <p>Zip Code: </p>
+        </label>
         <input
           type="text"
           id="disabledInput"
-          value="This is a grayed-out textbox."
+          value="Enter Zip Code Here."
           disabled
-          className="textbox"
+          className="textbox" // Add a class for styling
         />
       </div>
     </div>

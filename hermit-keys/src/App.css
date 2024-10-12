@@ -4,13 +4,13 @@
 }
 .hermit-keys {
   background-image: url("/Users/emilynguyen/Documents/GitHub/PatriotHacks2024/hermit-keys/public/IMG_9744.jpg"); /* Replace with the correct path */
-  background-size: cover; /* This makes sure the image covers the entire area */
-  background-position: center; /* Centers the image */
-  color: rgb(244, 87, 87); /* Adjust the text color to ensure readability */
-  padding: 20px; /* Adds some padding for spacing */
-  text-align: center; /* Centers the text */
-  font-size: 48px; /* Adjust the size of the title */
-  line-height: 1.2; /* Adjust the line height for better spacing */
+  background-size: cover;
+  background-position: center;
+  color: rgb(244, 87, 87);
+  padding: 20px;
+  text-align: center;
+  font-size: 48px;
+  line-height: 1.2;
 }
 
 h1 {
