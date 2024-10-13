@@ -6,13 +6,14 @@ const BuyerContent = () => {
   // Define state for annual income and selected dropdown option
   const [annualIncome, setAnnualIncome] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
-  const [responseMessage, setResponseMessage] = useState(""); // For the response
+  const [responseMessage, setResponseMessage] = useState("");
 
   // Handle input change for the income
   const handleInputChange = (e) => {
     setAnnualIncome(e.target.value); // Update annual income state
   };
 
+  //https://www.w3schools.com/howto/howto_css_dropdown.asp
   // Handle dropdown change
   const handleDropdownChange = (e) => {
     setSelectedOption(e.target.value); // Update selected option state
