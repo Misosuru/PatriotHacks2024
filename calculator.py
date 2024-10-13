@@ -67,25 +67,31 @@ class Report:
         pd_budget = "Based on that budget, you should look at these districts:"
         return self.find_options(valid_low, valid_high, pd_rent)
         
-    def find_struct(self, low_bound, high_bound):
+    def find_match(self, low_bound, high_bound, dicti):
         valid = {}
-        for x in r_struct_rent.items():
-            valid[x] = r_struct_rent[x][1]
+        for x in dicti:
+            if (dicti[x][1] < low_bound) or (len(valid) < 2 and dicti[x][1] < high_bound):
+                valid[x] = dicti[x][1]
+            else:
+                valid[0] = sorted(dicti)[0][0]
+        valid.sort()
+        me_match = valid.items()
+        return me_match[0][0]
         
     def __str__(self):
         low_bound, high_bound = self.create_budget()
         pd_budget = self.find_pd_budget(low_bound, high_bound, r_pd_rent())
         vacant_units = format(r_unit_vacancy()[self.unit][0], ",")
         unit_rent = format(r_unit_rent()[self.unit][1], ",")
-        struct = find_struct(low_bound, high_bound)
-        age = find_age(low_bound, high_bound)
+        struct = find_match(low_bound, high_bound, r_struct_rent)
+        age = find_match(low_bound, high_bound, r_age_rent)
         struct_rent = format(r_struct_rent()[struct][1], ",")
         age_rent = format(r_age_rent[age][1],",")
-        report_median = statistics.median([age_rent, struct_rent, unit_rent].sort)
+        report_median = statistics.median([age_rent, struct_rent, unit_rent].sort())
         report = f'''With an annual income of ${self.income}, your budget should be between ${low_bound:.2} and ${high_bound:.2}.
             {pd_budget}
         The average rent for a {self.unit} would be ${unit_rent:.2f}. There are {vacant_units} vacant {self.unit} units.
-        The structure that best matches your budget is [blank]. Rent is on average ${struct_rent} per month. 
-        The complex age that best matches your budget is [blank]. Rent is on average ${age_rent}per month.  
+        The structure that best matches your budget is "{struct}". Rent is on average ${struct_rent} per month. 
+        The complex age that best matches your budget is "{age}". Rent is on average ${age_rent}per month.  
         Based on the median of this data, you should find a rental unit around the price of ${report_median}'''
         return report
