@@ -17,6 +17,7 @@ LIST OF DICTIONARIES
  - renter_supervisor_monthly_rent_dictionary
  - renter_unit_monthly_rent_dictionary
  - renter_structure_monthly_rent_dictionary
+ - annual_inflation_dictionary
 """
 
 
