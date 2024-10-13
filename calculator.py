@@ -11,9 +11,17 @@ class Report:
             self.unit = unit
         else: 
             raise ValueError
+    def set_inflation(self):
+        inflate_dict = parser.inflate_rate()
+        inflation = 1
+        for x in range(4):
+            inflation *= inflate_dict[YEAR + x+1]
+        
+            
+        return inflation
     
     def create_budget(self):
-        inflation = pow(0.021,4) #need to change to a function that gets from parser
+        inflation = set_inflation()
         low_bound = self.income * self.RECC_BUDGET
         high_bound = self.income * (self.RECC_BUDGET + inflation)
         return low_bound, high_bound
@@ -25,17 +33,29 @@ class Report:
             sum += int(rent_dict[x])
         avg = sum/len(rent_dict)
         return avg
+    
+    def find_options(self, dict, title, is_high):
+       options = title
+       #https://www.geeksforgeeks.org/python-sort-python-dictionaries-by-key-or-value/
+       sorted_dict = sorted(dict.items())
+       x = 0
+       while x < 3:
+           x += 1
+           options += "\noption {x}:  {sorted_dict[x][1] (Avg. Rent: sorted_dict[x][0])}"
+           if is_high == True:
+               options+="\nPlease keep in mind that "
+                
        
     def find_pd_budget(self, low_bound, high_bound, pd_rent):
-        valid_low = []
-        valid_high = []
+        pd_rent_items = pd_rent.items()
+        valid_low = {}
+        valid_high = {}
         for x in pd_rent:
             if (pd_rent[x] < low_bound):
-                valid_low.append(pd_rent[x])
+                valid_low[pd_rent[x]] = x
             elif (pd_rent[x] < high_bound):
-                valid_high.append(pd_rent[x])
-        valid_low.sort()
-        valid_high.sort()
+                valid_high[pd_rent[x]] = x
+        
         
     
     def __str__(self):
