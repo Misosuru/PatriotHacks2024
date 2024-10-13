@@ -42,9 +42,17 @@ const RenterContent = () => {
           <div className="combined-container">
             <div className="text-container">
               <p>
-                Financial experts recommend that no more than 30% of your annual
-                income should go to housing costs. Use this tool to estimate how
-                much you can comfortably spend on housing.
+                Annual income is the biggest factor when it comes to choosing
+                your home. Financial advisors typically advise their clients to
+                set aside 30% of their gross annual income for house bills
+                alone. We took that into account, and thought ahead about
+                inflation! Renting laws vary from county to county, so some
+                landlords can jack up prices for the second lease. To calculate
+                an appropriate budget, we found the lower limit based on your
+                current income, and an upper limit based on projected inflation
+                for the next 4 years. All you need to look at are the final
+                results! We make finding an affordable and stable home as breezy
+                as the beach.
               </p>
             </div>
 
@@ -65,7 +73,17 @@ const RenterContent = () => {
           </div>
           <div className="combined-container">
             <div className="text-container">
-              <p>Add descriptions for counties here.</p>
+              <p>
+                Over 3,000 counties across the US have different costs of
+                living, welfare, transportation, local inflation, and renting
+                laws. All these different criteria and boxes to check make house
+                hunting so overwhelming. Thankfully, our tool can help you out.
+                While currently we are only zoned for Fairfax County, VA, we
+                plan to expand further out into Virginia, and then farther on
+                the East Coast! We'll help you take into account the different
+                aspects of living and commuting to work, to ensure your trip to
+                work is as relaxing as a vacation.
+              </p>
             </div>
             <div className="dropdown-container">
               <label htmlFor="county-preference">
@@ -80,14 +98,20 @@ const RenterContent = () => {
                   Select an option
                 </option>
                 <option value="Fairfax">Fairfax</option>
-                <option value="Loudoun">Loudoun</option>
-                <option value="Prince Williams">Prince Williams</option>
               </select>
             </div>
           </div>
           <div className="combined-container">
             <div className="text-container">
-              <p>Add descriptions for units here.</p>
+              <p>
+                Money isn't the only important thing about house-hunting! We
+                understand there are multiple factors to making that dream home
+                click. By inputting what type of house unit you want, we help
+                match you with different building styles, community sizes, and
+                age of buildings and appliances. We are currently in alpha, but
+                we hope to introduce narrowing down sweet spots with appropriate
+                vacancies and an archtectural style that fits your own.
+              </p>
             </div>
             <div className="dropdown-container">
               <label htmlFor="unit-reference">

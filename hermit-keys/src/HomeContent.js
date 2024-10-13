@@ -28,7 +28,6 @@ const HomeContent = () => {
             can be a bit of a doozy, but we’re here to help. Let HermitKeys
             guide you on your home journey.
           </p>
-          <p>~</p>
           <p>
             Rent has been getting pricey in America the last few years! The
             first graph (Construction Coverage) show the median residential rent
