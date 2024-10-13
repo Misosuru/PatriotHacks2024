@@ -3,7 +3,7 @@
   margin: auto;
 }
 .hermit-keys {
-  background-image: url("/Users/emilynguyen/Documents/GitHub/PatriotHacks2024/hermit-keys/public/IMG_9744.jpg"); /* Replace with the correct path */
+  background-image: url("/Users/emilynguyen/Documents/GitHub/PatriotHacks2024/hermit-keys/public/hermitkeys_waves_smallified.gif");
   background-size: cover;
   background-position: center;
   color: rgb(244, 87, 87);
@@ -21,10 +21,12 @@ h1 {
   font-weight: 700;
   line-height: 26.4px;
 }
-
+h1 span {
+  background-color: rgba(255, 255, 255, 0.5);
+}
 h3 {
   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 32px;
   font-style: normal;
   font-variant: normal;
   font-weight: 700;
@@ -33,7 +35,7 @@ h3 {
 
 p {
   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 24px;
   font-style: normal;
   font-variant: normal;
   font-weight: 400;

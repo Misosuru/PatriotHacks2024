@@ -10,7 +10,7 @@ h1 {
 
 h3 {
   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 32px;
   font-style: normal;
   font-variant: normal;
   font-weight: 700;
@@ -19,7 +19,7 @@ h3 {
 
 p {
   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 25px;
   font-style: normal;
   font-variant: normal;
   font-weight: 400;
@@ -66,7 +66,7 @@ pre {
 }
 
 .image-container img {
-  width: 500px;
+  width: 450px;
   justify-content: center;
   align-items: center;
   padding-left: 100px;
