@@ -3,7 +3,7 @@
   margin: auto;
 }
 .hermit-keys {
-  background-image: url("/Users/emilynguyen/Documents/GitHub/PatriotHacks2024/hermit-keys/public/hermitkeys_waves_smallified.gif");
+  background-image: url("../public/hermitkeys_waves_smallified.gif");
   background-size: cover;
   background-position: center;
   color: rgb(244, 87, 87);
