@@ -62,6 +62,11 @@ const RefContent = () => {
           (Daphne Ziegenfelder, Cathy Chau, and Emily Nguyen) for PatriotHacks
           2024.
         </p>
+        <img
+          src="/THE_CUTEST_CRABS.png"
+          alt="Description"
+          style={{ width: "300px", height: "auto" }}
+        />
       </div>
     </div>
   );

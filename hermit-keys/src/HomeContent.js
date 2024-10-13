@@ -28,8 +28,8 @@ const HomeContent = () => {
           <p>Add additional info about the graphics to the right.</p>
         </div>
         <div className="image-container">
-          <img src="/nationalBuy.png" alt="Description" />
           <img src="/nationalRent.png" alt="Description" />
+          <img src="/nationalBuy.png" alt="Description" />
         </div>
       </div>
     </div>
