@@ -10,7 +10,11 @@ const App = () => {
   const tabData = [
     { label: "Home", content: <HomeContent /> },
     { label: "Renter", content: <RenterContent /> },
-    { label: "Buyer", content: <BuyerContent /> },
+    //{ label: "Buyer", content: <BuyerContent /> },
+    {
+      label: "Buyer",
+      content: <div>Information for Home Buyers (Work In Progress)</div>,
+    },
     { label: "References", content: <RefContent /> },
   ];
 
