@@ -388,3 +388,42 @@ for row in annual_inflation_dictReader:
 #     print(f"{key}: {value}")
 
 # print(annual_inflation_dictionary.get("2010"))
+
+def buyer_map():
+    return buyer_map_dictionary
+
+def r_year_vacancy():
+    return renter_vacancy_rate_dictionary
+
+def r_pd_vacancy():
+    return renter_district_vacancy_rate_dictionary
+
+def r_age_vacancy():
+    return renter_age_vacancy_rate_dictionary
+
+def r_sd_vacancy():
+    return renter_supervisor_vacancy_rate_dictionary
+
+def r_unit_vacancy():
+    return renter_unit_vacancy_rate_dictionary
+
+def r_struct_vacancy():
+    return renter_structure_vacancy_rate_dictionary
+
+def r_year_rent():
+    return renter_monthly_rent_dictionary
+
+def r_age_rent():
+    return renter_age_monthly_rent_dictionary
+
+def r_pd_rent():
+    return renter_district_monthly_rent_dictionary
+
+def r_sd_rent():
+    return renter_supervisor_monthly_rent_dictionary
+
+def r_unit_rent():
+    return renter_unit_monthly_rent_dictionary
+
+def r_struct_rent():
+    return renter_structure_monthly_rent_dictionary
