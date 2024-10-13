@@ -5,7 +5,7 @@ class Report:
     YEAR = int(2023)
     
     def __init__(self, county, income, unit):
-        if (0 < float(income)):
+        if (0 < income):
             self.annual_income = float(income)
             self.income = float(income)/12
             self.county = county
@@ -18,10 +18,6 @@ class Report:
         inflation = 1
         for x in range(1,4):
             inflation *= 1 + float(inflate_dict[str(self.YEAR + 1)])
-<<<<<<< Updated upstream
-        # print(inflation)
-=======
->>>>>>> Stashed changes
         return inflation
     
     def create_budget(self):
@@ -35,11 +31,7 @@ class Report:
        #https://www.geeksforgeeks.org/python-sort-python-dictionaries-by-key-or-value/
        sorted_low = sorted(low_dict.items())
        sorted_high = sorted(high_dict.items())
-<<<<<<< Updated upstream
-    #    print(sorted_low)
-    #    print(sorted_high)
-=======
->>>>>>> Stashed changes
+
        if (len(low_dict) == 0) and (len(high_dict) == 0):
            sorted_rent = sorted(pd_rent.items(), key=lambda val: (val[1], val[0]))
            return f'''\nYour budget is too low to live comfortably in Fairfax County. The cheapest 
@@ -110,13 +102,13 @@ class Report:
       The average rent for a {self.unit} would be ${unit_rent:.2f}. There are {vacant_units} vacant {self.unit} units.
       The structure that best matches your budget is "{struct}". Rent is on average ${struct_rent} per month. 
       The complex age that best matches your budget is "{age} years". Rent is on average ${age_rent} per month.  
-    Based on the median of this data, you should find a rental unit between ${report_range}'''
+    Based on the median of this data, you should find a rental unit between ${report_range}\n'''
         return report
     
     
 #print(Report("Fairfax", 90000, "Studio"))
 
-print("Welcome to HermitKeys -- the easy breezy way to find your next homme!")
+print(f"\nWelcome to HermitKeys -- the easy breezy way to find your next home!")
 income = input("What is your annual income?       ")
 unit_list = ["Studio", "1 Bedroom", "1 Bedroom/Den", "2 Bedrooms", "2 Bedrooms/Den", "3 Bedrooms", "3 Bedrooms/Den", "4 Bedrooms"]
 found = False
