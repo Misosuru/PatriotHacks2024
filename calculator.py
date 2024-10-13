@@ -7,17 +7,23 @@ class Report:
         self.county = county
         self.unit = unit
         self.structure = structure
-        self.age = age
     
     def createBudget(self, income):
-        inflation = 0.021**4 #need to change to a function that gets from parser
+        inflation = pow(0.021,4) #need to change to a function that gets from parser
         low_bound = income * self.REC_BUDGET
         high_bound = income * (self.REC_BUDGET + inflation)
         bounds = str(low_bound) + " and " + str(high_bound)
         return bounds
     
-    def averageRent(self, structure)
-    
+    def averageRent(self, rent_dict):
+        sum = 0;
+        #check if what was gotten back isnt null, then do
+        for x in rent_dict:
+            sum += int(rent_dict[x])
+        avg = sum/len(rent_dict)
+        return avg;
+        #add up all values in for loop
+        #divide by length
     
     
     
