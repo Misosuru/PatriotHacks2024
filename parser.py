@@ -3,6 +3,24 @@ import csv
 # https://docs.python.org/3/library/csv.html
 
 """
+LIST OF DICTIONARIES
+ - buyer_map_dictionary
+ - renter_vacancy_rate_dictionary
+ - renter_district_vacancy_rate_dictionary
+ - renter_age_vacancy_rate_dictionary
+ - renter_supervisor_vacancy_rate_dictionary
+ - renter_unit_vacancy_rate_dictionary
+ - renter_structure_vacancy_rate_dictionary
+ - renter_monthly_rent_dictionary
+ - renter_age_monthly_rent_dictionary
+ - renter_district_monthly_rent_dictionary
+ - renter_supervisor_monthly_rent_dictionary
+ - renter_unit_monthly_rent_dictionary
+ - renter_structure_monthly_rent_dictionary
+"""
+
+
+"""
  !!! buyer_map_dictionary !!!
    key: TRACT
    values: [YEAR, TOTAL HOUSING UNITS, OCCUPIED HOUSING UNITS, LOW MARKET VALUE <500K, MID MARKET VALUE 500K to <1MIL, HIGH MARKET VALUE >1MIL]
@@ -250,13 +268,13 @@ for row in renter_age_monthly_rent_dictReader:
         Upper Potomac
         Vienna
 
-   values: [UNITS, VACANCY RATE]
+   values: [UNITS, AVG MONTHLY RENT]
  
    To access value of a year: renter_district_monthly_rent_dictionary.get("<District>")
        Ex: print(renter_district_monthly_rent_dictionary.get("Annadale"))
-           OUTPUT: ['4009', '9.5']
+           OUTPUT: ['4009', '1897']
 """
-renter_district_monthly_rent_dictReader = csv.DictReader(open("Planning_District_Vacancy_Rate.csv"))
+renter_district_monthly_rent_dictReader = csv.DictReader(open("Planning_District_Monthly_Rent.csv"))
 renter_district_monthly_rent_dictionary = {}
 for row in renter_district_monthly_rent_dictReader:
     values = list(row.values())
@@ -266,3 +284,107 @@ for row in renter_district_monthly_rent_dictReader:
 #     print(f"{key}: {value}")
 
 # print(renter_district_monthly_rent_dictionary.get("Annandale"))
+
+"""
+ !!! renter_supervisor_monthly_rent_dictionary !!!
+   keys (make sure it is exactly as shown): 
+        Braddock
+        Dranesville
+        Franconia
+        Hunter Mill
+        Mason
+        Mount Vernon
+        Providence
+        Springfield
+        Sully
+
+   values: [UNITS, AVG MONTHLY RENT]
+ 
+   To access value of a year: renter_supervisor_monthly_rent_dictionary.get("<Supervisor>")
+       Ex: print(renter_supervisor_monthly_rent_dictionary.get("Braddock"))
+           OUTPUT: ['5303', '2000']
+"""
+renter_supervisor_monthly_rent_dictReader = csv.DictReader(open("Supervisor_Monthly_Rent.csv"))
+renter_supervisor_monthly_rent_dictionary = {}
+for row in renter_supervisor_monthly_rent_dictReader:
+    values = list(row.values())
+    renter_supervisor_monthly_rent_dictionary[row["Supervisor"]] = values[1:len(values)]
+
+# for key, value in renter_supervisor_monthly_rent_dictionary.items():
+#     print(f"{key}: {value}")
+
+# print(renter_supervisor_monthly_rent_dictionary.get("Braddock"))
+
+"""
+ !!! renter_unit_monthly_rent_dictionary !!!
+   keys (make sure it is exactly as shown): 
+        Studio/Efficiency
+        1 Bedroom
+        1 Bedroom/Den
+        2 Bedrooms
+        2 Bedrooms/Den
+        3 Bedrooms
+        3 Bedrooms/Den
+        4 Bedrooms
+
+   values: [UNITS, 2022 AVG MONTHLY RENT, 2023 AVG MONTHLY RENT, PERCENT CHANGE]
+ 
+   To access value of a year: renter_unit_monthly_rent_dictionary.get("<Unit Type>")
+       Ex: print(renter_unit_monthly_rent_dictionary.get("1 Bedroom"))
+           OUTPUT: ['1755', '1825', '4']
+"""
+renter_unit_monthly_rent_dictReader = csv.DictReader(open("Unit_Type_Monthly_Rent.csv"))
+renter_unit_monthly_rent_dictionary = {}
+for row in renter_unit_monthly_rent_dictReader:
+    values = list(row.values())
+    renter_unit_monthly_rent_dictionary[row["Type"]] = values[1:len(values)]
+
+# for key, value in renter_unit_monthly_rent_dictionary.items():
+#     print(f"{key}: {value}")
+
+# print(renter_unit_monthly_rent_dictionary.get("1 Bedroom"))
+
+"""
+ !!! renter_structure_monthly_rent_dictionary !!!
+   keys (make sure it is exactly as shown): 
+        Low-Rise
+        Mid-Rise
+        High-Rise
+        Townhouse
+
+   values: [UNITS, 2022 AVG MONTHLY RENT, 2023 AVG MONTHLY RENT, PERCENT CHANGE]
+ 
+   To access value of a year: renter_structure_monthly_rent_dictionary.get("<Structure Type>")
+       Ex: print(renter_structure_monthly_rent_dictionary.get("Low-Rise"))
+           OUTPUT: ['1857', '1907', '2.7']
+"""
+renter_structure_monthly_rent_dictReader = csv.DictReader(open("Structure_Type_Monthly_Rent.csv"))
+renter_structure_monthly_rent_dictionary = {}
+for row in renter_structure_monthly_rent_dictReader:
+    values = list(row.values())
+    renter_structure_monthly_rent_dictionary[row["Structure"]] = values[1:len(values)]
+
+# for key, value in renter_structure_monthly_rent_dictionary.items():
+#     print(f"{key}: {value}")
+
+# print(renter_structure_monthly_rent_dictionary.get("Low-Rise"))
+
+"""
+ !!! annual_inflation_dictionary !!!
+   key: YEAR
+   values: [PERCENT CHANGE]
+ 
+   To access value of a year: annual_inflation_dictionary.get("<YEAR>")
+       Ex: print(annual_inflation_dictionary.get("2010"))
+           OUTPUT: ['1.6']
+"""
+annual_inflation_dictReader = csv.DictReader(open("Annual_Inflation_Rate.csv"))
+annual_inflation_dictionary = {}
+for row in annual_inflation_dictReader:
+    values = list(row.values())
+    annual_inflation_dictionary[row["Year"]] = values[1]
+
+# for key, value in annual_inflation_dictionary.items():
+#     print(f"{key}: {value}")
+
+# print(annual_inflation_dictionary.get("2010"))

@@ -1,10 +1,10 @@
 Supervisor,Units,Vacancy
-Braddock,5303,3.3
-Dranesville,7397,6.2
-Franconia,9432,8.9
-Hunter Mill,12814,10.2
-Mason,12988,4.8
-Mount Vernon,9498,6.5
-Providence,19828,5.7
-Springfield,5251,5.1
-Sully,5524,5
+Braddock,5303,0.033
+Dranesville,7397,0.062
+Franconia,9432,0.089
+Hunter Mill,12814,0.102
+Mason,12988,0.048
+Mount Vernon,9498,0.065
+Providence,19828,0.057
+Springfield,5251,0.051
+Sully,5524,0.05

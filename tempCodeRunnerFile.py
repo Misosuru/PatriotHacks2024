@@ -1,4 +1,4 @@
-for key, value in renter_structure_vacancy_rate_dictionary.items():
-#     print(f"{key}: {value}")
+for key, value in renter_district_vacancy_rate_dictionary.items():
+    print(f"{key}: {value}")
 
-# print(renter_structure_vacancy_rate_dictionary.get("Low-Rise"))
+print(renter_district_vacancy_rate_dictionary.get("Annandale"))
