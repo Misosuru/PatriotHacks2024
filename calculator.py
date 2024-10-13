@@ -7,7 +7,7 @@ class Report:
     
     def __init__(self, county, income, unit):
         if (0 < income):
-            self.income = income
+            self.income = int(income)
             self.county = county
             self.unit = unit
         else: 
@@ -27,13 +27,13 @@ class Report:
         return low_bound, high_bound
     
     def find_options(self, low_dict, high_dict, pd_rent):
-       options = ""
+       options = "\nBased on your budget, your best options are: "
        #https://www.geeksforgeeks.org/python-sort-python-dictionaries-by-key-or-value/
        sorted_low = sorted(low_dict.items())
        sorted_high = sorted(high_dict.items())
        if (len(low_dict) == 0) and (len(high_dict) == 0):
            sorted_rent = sorted(pd_rent.items(), key=lambda val: (val[1], val[0]))
-           return '''Your budget is too low to live comfortably in Fairfax County.
+           return '''\nYour budget is too low to live comfortably in Fairfax County.
             The cheapest place to live is {sorted_rent[0][0]}.'''
        x = 0
        goal = 3
@@ -83,15 +83,18 @@ class Report:
         pd_budget = self.find_pd_budget(low_bound, high_bound, r_pd_rent())
         vacant_units = format(r_unit_vacancy()[self.unit][0], ",")
         unit_rent = format(r_unit_rent()[self.unit][1], ",")
-        struct = find_match(low_bound, high_bound, r_struct_rent)
-        age = find_match(low_bound, high_bound, r_age_rent)
+        struct = self.find_match(low_bound, high_bound, r_struct_rent())
+        age = self.find_match(low_bound, high_bound, r_age_rent())
         struct_rent = format(r_struct_rent()[struct][1], ",")
         age_rent = format(r_age_rent[age][1],",")
         report_median = statistics.median([age_rent, struct_rent, unit_rent].sort())
-        report = f'''With an annual income of ${self.income}, your budget should be between ${low_bound:.2} and ${high_bound:.2}.
-            {pd_budget}
+        report = f'''To live in {self.county} with an annual income of ${self.income}, your budget should be 
+        between ${low_bound:.2} and ${high_bound:.2}. {pd_budget}
         The average rent for a {self.unit} would be ${unit_rent:.2f}. There are {vacant_units} vacant {self.unit} units.
         The structure that best matches your budget is "{struct}". Rent is on average ${struct_rent} per month. 
         The complex age that best matches your budget is "{age}". Rent is on average ${age_rent}per month.  
         Based on the median of this data, you should find a rental unit around the price of ${report_median}'''
         return report
+    
+    
+print(Report("Fairfax", 90000, "Studio"))
