@@ -58,9 +58,10 @@ const RefContent = () => {
       <div className="about-us">
         <h3>About Us!</h3>
         <p>
-          Created by three George Mason University Computer Science students
-          (Daphne Ziegenfelder, Cathy Chau, and Emily Nguyen) for PatriotHacks
-          2024.
+          Created by three George Mason University Computer Science students (
+          <i>Daphne Ziegenfelder, Cathy Chau, and Emily Nguyen</i>) for
+          PatriotHacks 2024. Art created by the amazing <i>Lauren Lewis</i> of
+          James Madison University.
         </p>
         <img
           src="/THE_CUTEST_CRABS.png"

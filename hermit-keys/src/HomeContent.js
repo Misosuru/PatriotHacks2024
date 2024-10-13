@@ -7,7 +7,11 @@ const HomeContent = () => {
       <div className="content-container">
         <div className="text-container">
           <h1>Welcome to HermitKeys!</h1>
-          <p>~</p>
+          <img
+            src="/take_2.gif"
+            alt="Description"
+            style={{ width: "150px", height: "auto" }}
+          />
           <p>
             Having trouble singling out your forever home? Looking for that
             perfect place that feels just right? Look no further!{" "}
@@ -25,7 +29,14 @@ const HomeContent = () => {
             guide you on your home journey.
           </p>
           <p>~</p>
-          <p>Add additional info about the graphics to the right.</p>
+          <p>
+            Rent has been getting pricey in America the last few years! The
+            first graph (Construction Coverage) show the median residential rent
+            in each state. Our tool deals more into the gnitty gritty of each
+            county to help you find the district to start your research. The
+            second graph (NAR Realtor) analyzes the market cost of all homes! It
+            gives you an idea of what counties will have costly properties.
+          </p>
         </div>
         <div className="image-container">
           <img src="/nationalRent.png" alt="Description" />
