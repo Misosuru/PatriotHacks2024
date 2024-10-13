@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import Tabs from "./Tabs";
 import HomeContent from "./HomeContent";
 import RenterContent from "./RenterContent";
+import BuyerContent from "./BuyerContent";
 import RefContent from "./RefContent";
 
 const App = () => {
   const tabData = [
     { label: "Home", content: <HomeContent /> },
     { label: "Renter", content: <RenterContent /> },
-    { label: "Buyer", content: <div>Information for Buyers</div> },
+    { label: "Buyer", content: <BuyerContent /> },
     { label: "About", content: <div>Learn More About The Project</div> },
     { label: "References", content: <RefContent /> },
   ];
