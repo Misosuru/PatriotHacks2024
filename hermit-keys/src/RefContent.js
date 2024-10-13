@@ -4,6 +4,13 @@ import "./RefContent.css";
 const RefContent = () => {
   return (
     <div className="ref-container">
+      <div className="about-us">
+        <h3>About Us!</h3>
+        <p>
+          Created by three George Mason University Computer Science Students for
+          PatriotHacks 2024.
+        </p>
+      </div>
       <h3>References</h3>
       <p>
         Carnes, F. (n.d.). Demographic Reports 2023. <br></br>

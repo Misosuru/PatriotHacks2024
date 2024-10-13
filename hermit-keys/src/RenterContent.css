@@ -104,3 +104,9 @@ pre {
   align-items: center;
   justify-content: space-between;
 }
+
+.about-us {
+  align-items: center;
+  align-self: center;
+  text-align: center;
+}

@@ -6,7 +6,8 @@ const HomeContent = () => {
     <div className="home-container">
       <div className="content-container">
         <div className="text-container">
-          <h3>Welcome to HermitKeys!</h3>
+          <h1>Welcome to HermitKeys!</h1>
+          <p>~</p>
           <p>
             Having trouble singling out your forever home? Looking for that
             perfect place that feels just right? Look no further!{" "}
@@ -23,23 +24,13 @@ const HomeContent = () => {
             can be a bit of a doozy, but we’re here to help. Let HermitKeys
             guide you on your home journey.
           </p>
+          <p>~</p>
+          <p>Add additional info about the graphics to the right.</p>
         </div>
         <div className="image-container">
           <img src="/nationalBuy.png" alt="Description" />
           <img src="/nationalRent.png" alt="Description" />
         </div>
-      </div>
-      <div className="input-container">
-        <label htmlFor="disabledInput">
-          <p>County: </p>
-        </label>
-        <input
-          type="text"
-          id="disabledInput"
-          value="Enter a County."
-          disabled
-          className="textbox" // Add a class for styling
-        />
       </div>
     </div>
   );

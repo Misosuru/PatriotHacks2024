@@ -10,7 +10,6 @@ const App = () => {
     { label: "Home", content: <HomeContent /> },
     { label: "Renter", content: <RenterContent /> },
     { label: "Buyer", content: <BuyerContent /> },
-    { label: "About", content: <div>Learn More About The Project</div> },
     { label: "References", content: <RefContent /> },
   ];
 

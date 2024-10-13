@@ -74,7 +74,6 @@ const RenterContent = () => {
                 id="county-reference"
                 value={selectedOption}
                 onChange={handleDropdownChange}
-                required
               >
                 <option value="" disabled>
                   Select an option
@@ -97,7 +96,6 @@ const RenterContent = () => {
                 id="unit-reference"
                 value={selectedOption}
                 onChange={handleDropdownChange}
-                required
               >
                 <option value="" disabled>
                   Select an option
@@ -119,7 +117,9 @@ const RenterContent = () => {
         </button>
 
         {/* Display response message */}
-        {responseMessage && <p>{responseMessage}</p>}
+        <div className="results-container">
+          {responseMessage && <p>{responseMessage}</p>}
+        </div>
       </form>
     </div>
   );

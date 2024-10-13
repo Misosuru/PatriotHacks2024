@@ -74,7 +74,6 @@ const BuyerContent = () => {
                 id="county-reference"
                 value={selectedOption}
                 onChange={handleDropdownChange}
-                required
               >
                 <option value="" disabled>
                   Select an option
@@ -97,7 +96,6 @@ const BuyerContent = () => {
                 id="unit-reference"
                 value={selectedOption}
                 onChange={handleDropdownChange}
-                required
               >
                 <option value="" disabled>
                   Select an option
@@ -118,8 +116,9 @@ const BuyerContent = () => {
           Submit
         </button>
 
-        {/* Display response message */}
-        {responseMessage && <p>{responseMessage}</p>}
+        <div className="results-container">
+          {responseMessage && <p>{responseMessage}</p>}
+        </div>
       </form>
     </div>
   );
