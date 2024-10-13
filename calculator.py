@@ -18,7 +18,7 @@ class Report:
         inflation = 1
         for x in range(1,4):
             inflation *= 1 + float(inflate_dict[str(self.YEAR + 1)])
-        print(inflation)
+        # print(inflation)
         return inflation
     
     def create_budget(self):
@@ -32,8 +32,8 @@ class Report:
        #https://www.geeksforgeeks.org/python-sort-python-dictionaries-by-key-or-value/
        sorted_low = sorted(low_dict.items())
        sorted_high = sorted(high_dict.items())
-       print(sorted_low)
-       print(sorted_high)
+    #    print(sorted_low)
+    #    print(sorted_high)
        if (len(low_dict) == 0) and (len(high_dict) == 0):
            sorted_rent = sorted(pd_rent.items(), key=lambda val: (val[1], val[0]))
            return f'''\nYour budget is too low to live comfortably in Fairfax County. The cheapest 
