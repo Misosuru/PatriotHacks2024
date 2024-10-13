@@ -6,7 +6,8 @@ class Report:
     
     def __init__(self, county, income, unit):
         if (0 < income):
-            self.income = float(income)
+            self.annual_income = float(income)
+            self.income = float(income)/12
             self.county = county
             self.unit = unit
         else: 
@@ -17,6 +18,7 @@ class Report:
         inflation = 1
         for x in range(1,4):
             inflation *= 1 + float(inflate_dict[str(self.YEAR + 1)])
+        print(inflation)
         return inflation
     
     def create_budget(self):
@@ -26,36 +28,34 @@ class Report:
         return low_bound, high_bound
     
     def find_options(self, low_dict, high_dict, pd_rent):
-       options = "\nBased on your budget, your best options are: "
+       options = f"\n    Based on that budget, you should look at these districts:"
        #https://www.geeksforgeeks.org/python-sort-python-dictionaries-by-key-or-value/
        sorted_low = sorted(low_dict.items())
        sorted_high = sorted(high_dict.items())
-       if (len(low_dict) == 0) or (len(high_dict) == 0):
+       print(sorted_low)
+       print(sorted_high)
+       if (len(low_dict) == 0) and (len(high_dict) == 0):
            sorted_rent = sorted(pd_rent.items(), key=lambda val: (val[1], val[0]))
            return f'''\nYour budget is too low to live comfortably in Fairfax County. The cheapest 
     place to live is {sorted_rent[0][0]}'''
-       x = 0
-       goal = 3
+       x = 1
+       goal = 4
        if (len(low_dict) + len(high_dict) < 3):
            goal = len(low_dict) + len(high_dict)
        while x < goal:
-            x += 1
             if len(low_dict) > x:
-                district = sorted_low[x][1]
-                rent = format(float(sorted_low[x][0]), ",")
-                options += "\noption {x}:  {district} (Avg. Rent: ${rent})"
+                district = sorted_low[0-x][1]
+                rent = float(sorted_low[0-x][0])
+                options += f"\n\toption {x}:  {district} (Avg. Rent: ${rent})"
             elif len(high_dict) > x - len(low_dict):
                 y = x - len(low_dict)
-                district = sorted_low[y][1]
-                rent = format(float(sorted_low[x][0]), ",")
-                options += "\noption {x}:  {district} (Avg. Rent: ${rent})"
-                rent_incrase = format(rent * self.set_inflation(), ",")
-                options+='''\nPlease keep in mind that this district is very close to your budget!
-            Inflation over the next 3 years will likely have your landlord increase rent to ${rent_increase}'''
+                district = sorted_high[y][1]
+                rent = float(sorted_high[x][0])
+                options += f"\n\toption {x}:  {district} (Avg. Rent: ${rent})"
+            x += 1
        return options
             
     def find_pd_budget(self, low_bound, high_bound, pd_rent):
-        pd_rent_items = pd_rent.items()
         valid_low = {}
         valid_high = {}
         for x in pd_rent:
@@ -63,20 +63,20 @@ class Report:
                 valid_low[pd_rent[x][1]] = x
             elif (float(pd_rent[x][1]) < high_bound):
                 valid_high[pd_rent[x][1]] = x
-        pd_budget = "Based on that budget, you should look at these districts:"
+            
         return self.find_options(valid_low, valid_high, pd_rent)
         
     def find_match(self, low_bound, high_bound, dicti):
         valid = {}
         for x in dicti:
             if (float(dicti[x][1]) < low_bound):
-                valid[x] = dicti[x][1]
-            elif (len(valid) < 2 and float(dicti[x][1]) < high_bound):
-                valid[x] = dicti[x][0]
+                valid[dicti[x][1]] = x
+            elif (float(dicti[x][1]) < high_bound):
+                valid[dicti[x][1]] = x
             else:
                 return sorted(dicti.items(), key=lambda val: (val[1], val[0]))[0][0]
         #https://www.geeksforgeeks.org/python-sort-python-dictionaries-by-key-or-value/
-        return sorted(valid.items(), key=lambda val: (val[0], val[1])).items()
+        return sorted(valid.items())[-1][1]
         
     def find_report_range(self, unit, struct, age):
         avg = (unit + struct + age)/3
@@ -99,13 +99,13 @@ class Report:
         struct_rent = int(r_struct_rent()[struct][1])
         age_rent = int(r_age_rent()[age][1])
         report_range = self.find_report_range(unit_rent, struct_rent, age_rent)
-        report = f'''To live in {self.county} with an annual income of ${self.income}, your budget should be 
-    between ${low_bound:.2f} and ${high_bound:.2f}. {pd_budget}
-        The average rent for a {self.unit} would be ${unit_rent:.2f}. There are {vacant_units} vacant {self.unit} units.
-        The structure that best matches your budget is "{struct}". Rent is on average ${struct_rent} per month. 
-        The complex age that best matches your budget is "{age} years". Rent is on average ${age_rent} per month.  
+        report = f'''    To live in {self.county} with an annual income of ${self.annual_income:.2f}, your monthly bill budget should be 
+        between ${low_bound:.2f} and ${high_bound:.2f}. {pd_budget}
+      The average rent for a {self.unit} would be ${unit_rent:.2f}. There are {vacant_units} vacant {self.unit} units.
+      The structure that best matches your budget is "{struct}". Rent is on average ${struct_rent} per month. 
+      The complex age that best matches your budget is "{age} years". Rent is on average ${age_rent} per month.  
     Based on the median of this data, you should find a rental unit between ${report_range}'''
         return report
     
     
-print(Report("Fairfax", 1000, "Studio"))
+print(Report("Fairfax", 90000, "Studio"))
