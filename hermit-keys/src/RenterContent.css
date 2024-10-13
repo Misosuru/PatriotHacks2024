@@ -94,11 +94,13 @@ pre {
   background-color: #2d8fe6;
 }
 .combined-container {
-  align-items: center;
-  flex-direction: column;
-  width: 20;
+  flex: 1;
+  margin: 0 10px;
 }
 
 .user-container {
+  display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
