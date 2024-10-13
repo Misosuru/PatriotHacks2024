@@ -368,3 +368,23 @@ for row in renter_structure_monthly_rent_dictReader:
 #     print(f"{key}: {value}")
 
 # print(renter_structure_monthly_rent_dictionary.get("Low-Rise"))
+
+"""
+ !!! annual_inflation_dictionary !!!
+   key: YEAR
+   values: [PERCENT CHANGE]
+ 
+   To access value of a year: annual_inflation_dictionary.get("<YEAR>")
+       Ex: print(annual_inflation_dictionary.get("2010"))
+           OUTPUT: ['1.6']
+"""
+annual_inflation_dictReader = csv.DictReader(open("Annual_Inflation_Rate.csv"))
+annual_inflation_dictionary = {}
+for row in annual_inflation_dictReader:
+    values = list(row.values())
+    annual_inflation_dictionary[row["Year"]] = values[1]
+
+# for key, value in annual_inflation_dictionary.items():
+#     print(f"{key}: {value}")
+
+# print(annual_inflation_dictionary.get("2010"))
