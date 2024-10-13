@@ -37,51 +37,81 @@ const RenterContent = () => {
   return (
     <div className="renter-container">
       <form onSubmit={handleSubmit}>
-        <div className="combined-container">
-          <div className="text-container">
-            <p>
-              Financial experts recommend that no more than 30% of your annual
-              income should go to housing costs. Use this tool to estimate how
-              much you can comfortably spend on housing.
-            </p>
-          </div>
+        <div className="user-container">
+          <div className="combined-container">
+            <div className="text-container">
+              <p>
+                Financial experts recommend that no more than 30% of your annual
+                income should go to housing costs. Use this tool to estimate how
+                much you can comfortably spend on housing.
+              </p>
+            </div>
 
-          <div className="input-container">
-            <label htmlFor="annualIncome">
-              <p>Enter Your Annual Income:</p>
-            </label>
-            <input
-              type="number"
-              id="annualIncome"
-              placeholder="Enter your Annual Income"
-              value={annualIncome}
-              onChange={handleInputChange}
-              className="textbox"
-              required
-            />
+            <div className="input-container">
+              <label htmlFor="annualIncome">
+                <p>Enter Your Annual Income:</p>
+              </label>
+              <input
+                type="number"
+                id="annualIncome"
+                placeholder="Enter your Annual Income"
+                value={annualIncome}
+                onChange={handleInputChange}
+                className="textbox"
+                required
+              />
+            </div>
           </div>
-        </div>
-        <div className="combined-container">
-          <div className="text-container">
-            <p>Add descriptions for counties here.</p>
+          <div className="combined-container">
+            <div className="text-container">
+              <p>Add descriptions for counties here.</p>
+            </div>
+            <div className="dropdown-container">
+              <label htmlFor="county-preference">
+                <p>Select County Preference:</p>
+              </label>
+              <select
+                id="county-reference"
+                value={selectedOption}
+                onChange={handleDropdownChange}
+                required
+              >
+                <option value="" disabled>
+                  Select an option
+                </option>
+                <option value="Fairfax">Fairfax</option>
+                <option value="Loudoun">Loudoun</option>
+                <option value="Prince Williams">Prince Williams</option>
+              </select>
+            </div>
           </div>
-          <div className="dropdown-container">
-            <label htmlFor="countPreference">
-              <p>Select County Preference:</p>
-            </label>
-            <select
-              id="countyreference"
-              value={selectedOption}
-              onChange={handleDropdownChange}
-              required
-            >
-              <option value="" disabled>
-                Select an option
-              </option>
-              <option value="Fairfax">Fairfax</option>
-              <option value="Loudoun">Loudoun</option>
-              <option value="Prince Williams">Prince Williams</option>
-            </select>
+          <div className="combined-container">
+            <div className="text-container">
+              <p>Add descriptions for units here.</p>
+            </div>
+            <div className="dropdown-container">
+              <label htmlFor="unit-reference">
+                <p>Select Unit Preference:</p>
+              </label>
+              <select
+                id="unit-reference"
+                value={selectedOption}
+                onChange={handleDropdownChange}
+                required
+              >
+                <option value="" disabled>
+                  Select an option
+                </option>
+                <option value="Studio">Studio</option>
+                <option value="1 Bedroom">1 Bedroom</option>
+                <option value="1 Den">1 Den</option>
+                <option value="2 Bedroom">2 Bedroom</option>
+                <option value="2 Den">2 Den</option>
+                <option value="3 Bedroom">3 Bedroom</option>
+                <option value="3 Den">3 Den</option>
+                <option value="4 Bedroom">3 Bedroom</option>
+              </select>
+            </div>
           </div>
         </div>
         <button type="submit" className="submit-button">
