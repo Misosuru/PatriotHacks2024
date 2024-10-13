@@ -13,6 +13,7 @@ const RenterContent = () => {
     setAnnualIncome(e.target.value); // Update annual income state
   };
 
+  //https://www.w3schools.com/howto/howto_css_dropdown.asp
   // Handle dropdown change
   const handleDropdownChange = (e) => {
     setSelectedOption(e.target.value); // Update selected option state

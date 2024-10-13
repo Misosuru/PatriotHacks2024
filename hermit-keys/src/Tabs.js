@@ -1,3 +1,4 @@
+//https://www.geeksforgeeks.org/how-to-create-tabs-in-reactjs/
 import React from "react";
 import Tab from "./Tab";
 import "./App.css";

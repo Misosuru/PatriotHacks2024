@@ -6,6 +6,7 @@ import BuyerContent from "./BuyerContent";
 import RefContent from "./RefContent";
 
 const App = () => {
+  //https://www.geeksforgeeks.org/how-to-create-tabs-in-reactjs/
   const tabData = [
     { label: "Home", content: <HomeContent /> },
     { label: "Renter", content: <RenterContent /> },
