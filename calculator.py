@@ -1,4 +1,5 @@
-import parser
+from parser import *
+import statistics
 
 class Report:
     RECC_BUDGET = .30
@@ -11,71 +12,80 @@ class Report:
             self.unit = unit
         else: 
             raise ValueError
-    def set_inflation(self):
-        inflate_dict = parser.inflate_rate()
-        inflation = 1
-        for x in range(4):
-            inflation *= inflate_dict[YEAR + x+1]
         
-            
+    def set_inflation(self):
+        inflate_dict = inflate_rate()
+        inflation = 1
+        for x in range(1,4):
+            inflation *= 1 + int(inflate_dict[self.YEAR + 1])
         return inflation
     
     def create_budget(self):
-        inflation = set_inflation()
+        inflation = self.set_inflation()
         low_bound = self.income * self.RECC_BUDGET
         high_bound = self.income * (self.RECC_BUDGET + inflation)
         return low_bound, high_bound
     
-    def average_rent(self, rent_dict):
-        sum = 0
-        #check if what was gotten back isnt null, then do
-        for x in rent_dict:
-            sum += int(rent_dict[x])
-        avg = sum/len(rent_dict)
-        return avg
-    
-    def find_options(self, dict, title, is_high):
-       options = title
+    def find_options(self, low_dict, high_dict, pd_rent):
+       options = ""
        #https://www.geeksforgeeks.org/python-sort-python-dictionaries-by-key-or-value/
-       sorted_dict = sorted(dict.items())
+       sorted_low = sorted(low_dict.items())
+       sorted_high = sorted(high_dict.items())
+       if (len(low_dict) == 0) and (len(high_dict) == 0):
+           sorted_rent = sorted(pd_rent.items(), key=lambda val: (val[1], val[0]))
+           return '''Your budget is too low to live comfortably in Fairfax County.
+            The cheapest place to live is {sorted_rent[0][0]}.'''
        x = 0
-       while x < 3:
-           x += 1
-           options += "\noption {x}:  {sorted_dict[x][1] (Avg. Rent: sorted_dict[x][0])}"
-           if is_high == True:
-               options+="\nPlease keep in mind that "
-                
-       
+       goal = 3
+       if (len(low_dict) + len(high_dict) < 3):
+           goal = len(low_dict) + len(high_dict)
+       while x < goal:
+            x += 1
+            if len(low_dict) > x:
+                district = sorted_low[x][1]
+                rent = format(int(sorted_low[x][0]), ",")
+                options += "\noption {x}:  {district} (Avg. Rent: ${rent})"
+            elif len(high_dict) > x-len(low_dict):
+                y = x-len(low_dict)
+                district = sorted_low[y][1]
+                rent = format(int(sorted_low[x][0]), ",")
+                options += "\noption {x}:  {district} (Avg. Rent: ${rent})"
+                rent_incrase = format(rent * self.set_inflation(), ",")
+                options+='''\nPlease keep in mind that this district is very close to your budget!
+                Inflation over the next 3 years will likely have your landlord increase rent to ${rent_increase}'''
+       return options
+            
     def find_pd_budget(self, low_bound, high_bound, pd_rent):
         pd_rent_items = pd_rent.items()
         valid_low = {}
         valid_high = {}
         for x in pd_rent:
-            if (pd_rent[x] < low_bound):
-                valid_low[pd_rent[x]] = x
-            elif (pd_rent[x] < high_bound):
-                valid_high[pd_rent[x]] = x
+            if (pd_rent[x][1] < low_bound):
+                valid_low[pd_rent[x][1]] = x
+            elif (pd_rent[x][1] < high_bound):
+                valid_high[pd_rent[x][1]] = x
+        pd_budget = "Based on that budget, you should look at these districts:"
+        return self.find_options(valid_low, valid_high, pd_rent)
         
+    def find_struct(self, low_bound, high_bound):
+        valid = {}
+        for x in r_struct_rent.items():
+            valid[x] = r_struct_rent[x][1]
         
-    
     def __str__(self):
-        unit_rent = average_rent(r_unit_rent())
-        struct_rent = average_rent(r_struct_rent())
-        low_bound, high_bound = create_budget()
-        report = f'''With an annual income of {self.income}, your budget should be between {low_bound} and {high_bound}.
-            Based on that budget, you should look at these districts:
-                option 1:
-                option 2:
-                option 3:
-        The average rent for a {self.unit} would be ${unit_rent:.2f}.
-            You will have a higher chance of finding vacancies in:
-                option 1:
-                option 2:
-                option 3: 
-        The structure that best matches your budget is [blank]. 
-            These have a [higher/lower] vacancy rate than those [taller/shorter] 
-            than it. Rent is [annual rent], at a monthly rate of [amount]. 
-        The complex age that best matches your budget is [blank]. 
-            These have a [higher/lower] vacancy rate than those [older/younger] 
-            than it. Rent is [annual rent], at a monthly rate of [amount]. '''
+        low_bound, high_bound = self.create_budget()
+        pd_budget = self.find_pd_budget(low_bound, high_bound, r_pd_rent())
+        vacant_units = format(r_unit_vacancy()[self.unit][0], ",")
+        unit_rent = format(r_unit_rent()[self.unit][1], ",")
+        struct = find_struct(low_bound, high_bound)
+        age = find_age(low_bound, high_bound)
+        struct_rent = format(r_struct_rent()[struct][1], ",")
+        age_rent = format(r_age_rent[age][1],",")
+        report_median = statistics.median([age_rent, struct_rent, unit_rent].sort)
+        report = f'''With an annual income of ${self.income}, your budget should be between ${low_bound:.2} and ${high_bound:.2}.
+            {pd_budget}
+        The average rent for a {self.unit} would be ${unit_rent:.2f}. There are {vacant_units} vacant {self.unit} units.
+        The structure that best matches your budget is [blank]. Rent is on average ${struct_rent} per month. 
+        The complex age that best matches your budget is [blank]. Rent is on average ${age_rent}per month.  
+        Based on the median of this data, you should find a rental unit around the price of ${report_median}'''
         return report

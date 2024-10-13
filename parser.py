@@ -153,7 +153,7 @@ for row in renter_supervisor_vacancy_rate_dictReader:
 """
  !!! renter_unit_vacancy_rate_dictionary !!!
    keys (make sure it is exactly as shown): 
-        Studio/Efficiency
+        Studio
         1 Bedroom
         1 Bedroom/Den
         2 Bedrooms
