@@ -427,3 +427,6 @@ def r_unit_rent():
 
 def r_struct_rent():
     return renter_structure_monthly_rent_dictionary
+
+def inflate_rate():
+    return annual_inflation_dictionary
