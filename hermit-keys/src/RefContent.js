@@ -63,11 +63,6 @@ const RefContent = () => {
           PatriotHacks 2024. Art created by the amazing <i>Lauren Lewis</i> of
           James Madison University.
         </p>
-        <img
-          src="/THE_CUTEST_CRABS.png"
-          alt="Description"
-          style={{ width: "300px", height: "auto" }}
-        />
       </div>
     </div>
   );

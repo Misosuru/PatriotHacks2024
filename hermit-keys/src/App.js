@@ -13,7 +13,18 @@ const App = () => {
     //{ label: "Buyer", content: <BuyerContent /> },
     {
       label: "Buyer",
-      content: <div>Information for Home Buyers (Work In Progress)</div>,
+      content: (
+        <div>
+          <p>
+            <i>Pardon the Sand!</i>
+          </p>
+          <p>
+            Thank you for your patience! We're busy crafting the Buyer
+            Information section to bring you everything you need to find your
+            perfect home. Check back soon for exciting updates!
+          </p>
+        </div>
+      ),
     },
     { label: "References", content: <RefContent /> },
   ];
@@ -33,6 +44,11 @@ const App = () => {
         <span>HermitKeys</span>
       </h1>
       <Tabs tabs={tabData} onTabClick={handleTabClick} activeTab={activeTab} />
+      <img
+        src="/THE_CUTEST_CRABS.png"
+        alt="Description"
+        style={{ width: "300px", height: "auto" }}
+      />
     </div>
   );
 };
